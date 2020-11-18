@@ -35,6 +35,7 @@
             this.dgv_movie = new System.Windows.Forms.DataGridView();
             this.rental_tab = new System.Windows.Forms.TabPage();
             this.dgv_rental = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.customer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customer)).BeginInit();
@@ -49,10 +50,10 @@
             this.tabControl1.Controls.Add(this.customer_tab);
             this.tabControl1.Controls.Add(this.movie_tab);
             this.tabControl1.Controls.Add(this.rental_tab);
-            this.tabControl1.Location = new System.Drawing.Point(83, 57);
+            this.tabControl1.Location = new System.Drawing.Point(39, 35);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(556, 350);
+            this.tabControl1.Size = new System.Drawing.Size(544, 341);
             this.tabControl1.TabIndex = 0;
             // 
             // customer_tab
@@ -62,16 +63,16 @@
             this.customer_tab.Location = new System.Drawing.Point(4, 22);
             this.customer_tab.Name = "customer_tab";
             this.customer_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.customer_tab.Size = new System.Drawing.Size(548, 324);
+            this.customer_tab.Size = new System.Drawing.Size(536, 315);
             this.customer_tab.TabIndex = 0;
             this.customer_tab.Text = "Customer";
             // 
             // dgv_customer
             // 
             this.dgv_customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_customer.Location = new System.Drawing.Point(16, 21);
+            this.dgv_customer.Location = new System.Drawing.Point(9, 9);
             this.dgv_customer.Name = "dgv_customer";
-            this.dgv_customer.Size = new System.Drawing.Size(511, 285);
+            this.dgv_customer.Size = new System.Drawing.Size(521, 300);
             this.dgv_customer.TabIndex = 0;
             // 
             // movie_tab
@@ -81,7 +82,7 @@
             this.movie_tab.Location = new System.Drawing.Point(4, 22);
             this.movie_tab.Name = "movie_tab";
             this.movie_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.movie_tab.Size = new System.Drawing.Size(548, 324);
+            this.movie_tab.Size = new System.Drawing.Size(536, 315);
             this.movie_tab.TabIndex = 1;
             this.movie_tab.Text = "Movie";
             // 
@@ -100,7 +101,7 @@
             this.rental_tab.Location = new System.Drawing.Point(4, 22);
             this.rental_tab.Name = "rental_tab";
             this.rental_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.rental_tab.Size = new System.Drawing.Size(548, 324);
+            this.rental_tab.Size = new System.Drawing.Size(536, 315);
             this.rental_tab.TabIndex = 2;
             this.rental_tab.Text = "Rental";
             // 
@@ -112,12 +113,22 @@
             this.dgv_rental.Size = new System.Drawing.Size(511, 285);
             this.dgv_rental.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(612, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(283, 230);
+            this.panel1.TabIndex = 1;
+            // 
             // VedioRental
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = global::VedioRental.Properties.Resources.vedio_wal;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1181, 638);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.Name = "VedioRental";
             this.Text = "VedioRental";
@@ -142,6 +153,7 @@
         private System.Windows.Forms.DataGridView dgv_movie;
         private System.Windows.Forms.TabPage rental_tab;
         private System.Windows.Forms.DataGridView dgv_rental;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
