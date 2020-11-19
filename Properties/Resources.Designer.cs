@@ -63,6 +63,16 @@ namespace VedioRental.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gamewal {
+            get {
+                object obj = ResourceManager.GetObject("gamewal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap vedio_wal {
             get {
                 object obj = ResourceManager.GetObject("vedio_wal", resourceCulture);
