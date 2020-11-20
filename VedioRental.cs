@@ -66,6 +66,75 @@ namespace VedioRental
 
         }
 
-       
+        private void add_cust_btn_Click(object sender, EventArgs e)
+        {
+            if (tb_first_name.Text != "" && tb_last_name.Text != "" && tb_address.Text != "" && tb_phone.Text != "")
+            {
+                string message = Obj_Data.CustomerInsert(tb_first_name.Text, tb_last_name.Text, tb_phone.Text, tb_address.Text);
+                MessageBox.Show(message);
+                tb_first_name.Text = "";
+                tb_last_name.Text = "";
+                tb_phone.Text = "";
+                tb_address.Text = "";
+                Customer_Load();
+            }
+            else
+            {
+                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
+            }
+        }
+
+        private void dgv_customer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string newvalue = dgv_customer.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                this.Text = "Row : " + e.RowIndex.ToString() + " Col : " + e.ColumnIndex.ToString() + " Value = " + newvalue;
+                Obj_Data.CustomerID = Convert.ToInt32(dgv_customer.Rows[e.RowIndex].Cells[0].Value);
+                tb_first_name.Text = dgv_customer.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_last_name.Text = dgv_customer.Rows[e.RowIndex].Cells[2].Value.ToString();
+                tb_phone.Text = dgv_customer.Rows[e.RowIndex].Cells[4].Value.ToString();
+                tb_address.Text = dgv_customer.Rows[e.RowIndex].Cells[3].Value.ToString();
+                tb_cust_name_rental.Text = dgv_customer.Rows[e.RowIndex].Cells[1].Value.ToString() + " " + dgv_customer.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something is wrong", ex.Message);
+            }
+        }
+
+        private void update_cust_btn_Click(object sender, EventArgs e)
+        {
+            if (tb_first_name.Text != "" && tb_last_name.Text != "" && tb_address.Text != "" && tb_phone.Text != "")
+            {
+                string message = Obj_Data.CustomerUpdate(tb_first_name.Text, tb_last_name.Text, tb_phone.Text, tb_address.Text);
+                MessageBox.Show(message);
+                tb_first_name.Text = "";
+                tb_last_name.Text = "";
+                tb_phone.Text = "";
+                tb_address.Text = "";
+                tb_cust_name_rental.Text = "";
+                Customer_Load();
+            }
+            else
+            {
+                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
+            }
+
+
+        }
+
+        private void del_cust_btn_Click(object sender, EventArgs e)
+        {
+            string message = Obj_Data.CustomerDelete();
+            MessageBox.Show(message);
+            tb_first_name.Text = "";
+            tb_last_name.Text = "";
+            tb_phone.Text = "";
+            tb_address.Text = "";
+            tb_cust_name_rental.Text = "";
+            Customer_Load();
+        }
     }
+    
 }

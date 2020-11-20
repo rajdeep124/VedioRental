@@ -40,26 +40,24 @@
             this.tb_address = new System.Windows.Forms.TextBox();
             this.tb_last_name = new System.Windows.Forms.TextBox();
             this.tb_first_name = new System.Windows.Forms.TextBox();
-            this.update_button = new System.Windows.Forms.Button();
-            this.del_button = new System.Windows.Forms.Button();
-            this.add_button = new System.Windows.Forms.Button();
+            this.update_cust_btn = new System.Windows.Forms.Button();
+            this.del_cust_btn = new System.Windows.Forms.Button();
+            this.add_cust_btn = new System.Windows.Forms.Button();
             this.phone_label = new System.Windows.Forms.Label();
             this.address_label = new System.Windows.Forms.Label();
             this.Last_Name_label = new System.Windows.Forms.Label();
             this.First_Name_label = new System.Windows.Forms.Label();
             this.customer_title = new System.Windows.Forms.Label();
             this.rental_panel = new System.Windows.Forms.Panel();
-            this.tb_date_returned = new System.Windows.Forms.TextBox();
-            this.tb_date_rented = new System.Windows.Forms.TextBox();
-            this.tb_cust_idfk = new System.Windows.Forms.TextBox();
-            this.tb_movie_idfk = new System.Windows.Forms.TextBox();
+            this.tb_cust_name_rental = new System.Windows.Forms.TextBox();
+            this.tb_movie_name_rental = new System.Windows.Forms.TextBox();
             this.update_rental_btn = new System.Windows.Forms.Button();
             this.del_rental_btn = new System.Windows.Forms.Button();
             this.add_rental_btn = new System.Windows.Forms.Button();
-            this.date_returned_lbl = new System.Windows.Forms.Label();
-            this.date_rented_lbl = new System.Windows.Forms.Label();
-            this.cust_id_lbl = new System.Windows.Forms.Label();
-            this.movie_id_lbl = new System.Windows.Forms.Label();
+            this.date_returned_lbl_rental = new System.Windows.Forms.Label();
+            this.date_rented_lbl_rental = new System.Windows.Forms.Label();
+            this.cust_name_lbl_lbl = new System.Windows.Forms.Label();
+            this.movie_name_lbl_rental = new System.Windows.Forms.Label();
             this.rental_title = new System.Windows.Forms.Label();
             this.movie_panel = new System.Windows.Forms.Panel();
             this.tb_genre = new System.Windows.Forms.TextBox();
@@ -81,6 +79,8 @@
             this.rating_lbl = new System.Windows.Forms.Label();
             this.movie_title = new System.Windows.Forms.Label();
             this.vedioRental_title_lbl = new System.Windows.Forms.Label();
+            this.DTP_Date_Rented_Rental = new System.Windows.Forms.DateTimePicker();
+            this.DTP_DateReturned_Rented = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.customer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customer)).BeginInit();
@@ -122,6 +122,8 @@
             this.dgv_customer.Name = "dgv_customer";
             this.dgv_customer.Size = new System.Drawing.Size(521, 300);
             this.dgv_customer.TabIndex = 0;
+            this.dgv_customer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_customer_CellContentClick);
+            this.dgv_customer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_customer_CellContentClick);
             // 
             // movie_tab
             // 
@@ -167,15 +169,15 @@
             this.customer_panel.Controls.Add(this.tb_address);
             this.customer_panel.Controls.Add(this.tb_last_name);
             this.customer_panel.Controls.Add(this.tb_first_name);
-            this.customer_panel.Controls.Add(this.update_button);
-            this.customer_panel.Controls.Add(this.del_button);
-            this.customer_panel.Controls.Add(this.add_button);
+            this.customer_panel.Controls.Add(this.update_cust_btn);
+            this.customer_panel.Controls.Add(this.del_cust_btn);
+            this.customer_panel.Controls.Add(this.add_cust_btn);
             this.customer_panel.Controls.Add(this.phone_label);
             this.customer_panel.Controls.Add(this.address_label);
             this.customer_panel.Controls.Add(this.Last_Name_label);
             this.customer_panel.Controls.Add(this.First_Name_label);
             this.customer_panel.Controls.Add(this.customer_title);
-            this.customer_panel.Location = new System.Drawing.Point(613, 119);
+            this.customer_panel.Location = new System.Drawing.Point(637, 130);
             this.customer_panel.Name = "customer_panel";
             this.customer_panel.Size = new System.Drawing.Size(336, 268);
             this.customer_panel.TabIndex = 1;
@@ -208,32 +210,38 @@
             this.tb_first_name.Size = new System.Drawing.Size(100, 20);
             this.tb_first_name.TabIndex = 8;
             // 
-            // update_button
+            // update_cust_btn
             // 
-            this.update_button.Location = new System.Drawing.Point(258, 227);
-            this.update_button.Name = "update_button";
-            this.update_button.Size = new System.Drawing.Size(75, 23);
-            this.update_button.TabIndex = 7;
-            this.update_button.Text = "Update";
-            this.update_button.UseVisualStyleBackColor = true;
+            this.update_cust_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.update_cust_btn.Location = new System.Drawing.Point(258, 227);
+            this.update_cust_btn.Name = "update_cust_btn";
+            this.update_cust_btn.Size = new System.Drawing.Size(75, 23);
+            this.update_cust_btn.TabIndex = 7;
+            this.update_cust_btn.Text = "Update";
+            this.update_cust_btn.UseVisualStyleBackColor = false;
+            this.update_cust_btn.Click += new System.EventHandler(this.update_cust_btn_Click);
             // 
-            // del_button
+            // del_cust_btn
             // 
-            this.del_button.Location = new System.Drawing.Point(128, 227);
-            this.del_button.Name = "del_button";
-            this.del_button.Size = new System.Drawing.Size(75, 23);
-            this.del_button.TabIndex = 6;
-            this.del_button.Text = "Delete";
-            this.del_button.UseVisualStyleBackColor = true;
+            this.del_cust_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.del_cust_btn.Location = new System.Drawing.Point(128, 227);
+            this.del_cust_btn.Name = "del_cust_btn";
+            this.del_cust_btn.Size = new System.Drawing.Size(75, 23);
+            this.del_cust_btn.TabIndex = 6;
+            this.del_cust_btn.Text = "Delete";
+            this.del_cust_btn.UseVisualStyleBackColor = false;
+            this.del_cust_btn.Click += new System.EventHandler(this.del_cust_btn_Click);
             // 
-            // add_button
+            // add_cust_btn
             // 
-            this.add_button.Location = new System.Drawing.Point(4, 227);
-            this.add_button.Name = "add_button";
-            this.add_button.Size = new System.Drawing.Size(75, 23);
-            this.add_button.TabIndex = 5;
-            this.add_button.Text = "Add";
-            this.add_button.UseVisualStyleBackColor = true;
+            this.add_cust_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.add_cust_btn.Location = new System.Drawing.Point(4, 227);
+            this.add_cust_btn.Name = "add_cust_btn";
+            this.add_cust_btn.Size = new System.Drawing.Size(75, 23);
+            this.add_cust_btn.TabIndex = 5;
+            this.add_cust_btn.Text = "Add";
+            this.add_cust_btn.UseVisualStyleBackColor = false;
+            this.add_cust_btn.Click += new System.EventHandler(this.add_cust_btn_Click);
             // 
             // phone_label
             // 
@@ -284,113 +292,102 @@
             // 
             // rental_panel
             // 
-            this.rental_panel.Controls.Add(this.tb_date_returned);
-            this.rental_panel.Controls.Add(this.tb_date_rented);
-            this.rental_panel.Controls.Add(this.tb_cust_idfk);
-            this.rental_panel.Controls.Add(this.tb_movie_idfk);
+            this.rental_panel.Controls.Add(this.DTP_DateReturned_Rented);
+            this.rental_panel.Controls.Add(this.DTP_Date_Rented_Rental);
+            this.rental_panel.Controls.Add(this.tb_cust_name_rental);
+            this.rental_panel.Controls.Add(this.tb_movie_name_rental);
             this.rental_panel.Controls.Add(this.update_rental_btn);
             this.rental_panel.Controls.Add(this.del_rental_btn);
             this.rental_panel.Controls.Add(this.add_rental_btn);
-            this.rental_panel.Controls.Add(this.date_returned_lbl);
-            this.rental_panel.Controls.Add(this.date_rented_lbl);
-            this.rental_panel.Controls.Add(this.cust_id_lbl);
-            this.rental_panel.Controls.Add(this.movie_id_lbl);
+            this.rental_panel.Controls.Add(this.date_returned_lbl_rental);
+            this.rental_panel.Controls.Add(this.date_rented_lbl_rental);
+            this.rental_panel.Controls.Add(this.cust_name_lbl_lbl);
+            this.rental_panel.Controls.Add(this.movie_name_lbl_rental);
             this.rental_panel.Controls.Add(this.rental_title);
-            this.rental_panel.Location = new System.Drawing.Point(39, 458);
+            this.rental_panel.Location = new System.Drawing.Point(268, 466);
             this.rental_panel.Name = "rental_panel";
-            this.rental_panel.Size = new System.Drawing.Size(315, 266);
+            this.rental_panel.Size = new System.Drawing.Size(380, 266);
             this.rental_panel.TabIndex = 2;
             // 
-            // tb_date_returned
+            // tb_cust_name_rental
             // 
-            this.tb_date_returned.Location = new System.Drawing.Point(198, 187);
-            this.tb_date_returned.Name = "tb_date_returned";
-            this.tb_date_returned.Size = new System.Drawing.Size(100, 20);
-            this.tb_date_returned.TabIndex = 11;
+            this.tb_cust_name_rental.Location = new System.Drawing.Point(165, 100);
+            this.tb_cust_name_rental.Name = "tb_cust_name_rental";
+            this.tb_cust_name_rental.Size = new System.Drawing.Size(100, 20);
+            this.tb_cust_name_rental.TabIndex = 9;
             // 
-            // tb_date_rented
+            // tb_movie_name_rental
             // 
-            this.tb_date_rented.Location = new System.Drawing.Point(198, 146);
-            this.tb_date_rented.Name = "tb_date_rented";
-            this.tb_date_rented.Size = new System.Drawing.Size(100, 20);
-            this.tb_date_rented.TabIndex = 10;
-            // 
-            // tb_cust_idfk
-            // 
-            this.tb_cust_idfk.Location = new System.Drawing.Point(198, 100);
-            this.tb_cust_idfk.Name = "tb_cust_idfk";
-            this.tb_cust_idfk.Size = new System.Drawing.Size(100, 20);
-            this.tb_cust_idfk.TabIndex = 9;
-            // 
-            // tb_movie_idfk
-            // 
-            this.tb_movie_idfk.Location = new System.Drawing.Point(198, 58);
-            this.tb_movie_idfk.Name = "tb_movie_idfk";
-            this.tb_movie_idfk.Size = new System.Drawing.Size(100, 20);
-            this.tb_movie_idfk.TabIndex = 8;
+            this.tb_movie_name_rental.Location = new System.Drawing.Point(165, 58);
+            this.tb_movie_name_rental.Name = "tb_movie_name_rental";
+            this.tb_movie_name_rental.Size = new System.Drawing.Size(100, 20);
+            this.tb_movie_name_rental.TabIndex = 8;
             // 
             // update_rental_btn
             // 
+            this.update_rental_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.update_rental_btn.Location = new System.Drawing.Point(210, 226);
             this.update_rental_btn.Name = "update_rental_btn";
             this.update_rental_btn.Size = new System.Drawing.Size(75, 23);
             this.update_rental_btn.TabIndex = 7;
             this.update_rental_btn.Text = "Update";
-            this.update_rental_btn.UseVisualStyleBackColor = true;
+            this.update_rental_btn.UseVisualStyleBackColor = false;
             // 
             // del_rental_btn
             // 
+            this.del_rental_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.del_rental_btn.Location = new System.Drawing.Point(100, 226);
             this.del_rental_btn.Name = "del_rental_btn";
             this.del_rental_btn.Size = new System.Drawing.Size(75, 23);
             this.del_rental_btn.TabIndex = 6;
             this.del_rental_btn.Text = "Delete";
-            this.del_rental_btn.UseVisualStyleBackColor = true;
+            this.del_rental_btn.UseVisualStyleBackColor = false;
             // 
             // add_rental_btn
             // 
+            this.add_rental_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.add_rental_btn.Location = new System.Drawing.Point(12, 226);
             this.add_rental_btn.Name = "add_rental_btn";
             this.add_rental_btn.Size = new System.Drawing.Size(75, 23);
             this.add_rental_btn.TabIndex = 5;
             this.add_rental_btn.Text = "Add";
-            this.add_rental_btn.UseVisualStyleBackColor = true;
+            this.add_rental_btn.UseVisualStyleBackColor = false;
             // 
-            // date_returned_lbl
+            // date_returned_lbl_rental
             // 
-            this.date_returned_lbl.AutoSize = true;
-            this.date_returned_lbl.Location = new System.Drawing.Point(27, 187);
-            this.date_returned_lbl.Name = "date_returned_lbl";
-            this.date_returned_lbl.Size = new System.Drawing.Size(77, 13);
-            this.date_returned_lbl.TabIndex = 4;
-            this.date_returned_lbl.Text = "Date Returned";
+            this.date_returned_lbl_rental.AutoSize = true;
+            this.date_returned_lbl_rental.Location = new System.Drawing.Point(27, 187);
+            this.date_returned_lbl_rental.Name = "date_returned_lbl_rental";
+            this.date_returned_lbl_rental.Size = new System.Drawing.Size(77, 13);
+            this.date_returned_lbl_rental.TabIndex = 4;
+            this.date_returned_lbl_rental.Text = "Date Returned";
             // 
-            // date_rented_lbl
+            // date_rented_lbl_rental
             // 
-            this.date_rented_lbl.AutoSize = true;
-            this.date_rented_lbl.Location = new System.Drawing.Point(27, 153);
-            this.date_rented_lbl.Name = "date_rented_lbl";
-            this.date_rented_lbl.Size = new System.Drawing.Size(68, 13);
-            this.date_rented_lbl.TabIndex = 3;
-            this.date_rented_lbl.Text = "Date Rented";
+            this.date_rented_lbl_rental.AutoSize = true;
+            this.date_rented_lbl_rental.Location = new System.Drawing.Point(27, 153);
+            this.date_rented_lbl_rental.Name = "date_rented_lbl_rental";
+            this.date_rented_lbl_rental.Size = new System.Drawing.Size(68, 13);
+            this.date_rented_lbl_rental.TabIndex = 3;
+            this.date_rented_lbl_rental.Text = "Date Rented";
             // 
-            // cust_id_lbl
+            // cust_name_lbl_lbl
             // 
-            this.cust_id_lbl.AutoSize = true;
-            this.cust_id_lbl.Location = new System.Drawing.Point(27, 107);
-            this.cust_id_lbl.Name = "cust_id_lbl";
-            this.cust_id_lbl.Size = new System.Drawing.Size(65, 13);
-            this.cust_id_lbl.TabIndex = 2;
-            this.cust_id_lbl.Text = "Customer ID";
+            this.cust_name_lbl_lbl.AutoSize = true;
+            this.cust_name_lbl_lbl.Location = new System.Drawing.Point(27, 107);
+            this.cust_name_lbl_lbl.Name = "cust_name_lbl_lbl";
+            this.cust_name_lbl_lbl.Size = new System.Drawing.Size(82, 13);
+            this.cust_name_lbl_lbl.TabIndex = 2;
+            this.cust_name_lbl_lbl.Text = "Customer Name";
             // 
-            // movie_id_lbl
+            // movie_name_lbl_rental
             // 
-            this.movie_id_lbl.AutoSize = true;
-            this.movie_id_lbl.Location = new System.Drawing.Point(27, 58);
-            this.movie_id_lbl.Name = "movie_id_lbl";
-            this.movie_id_lbl.Size = new System.Drawing.Size(50, 13);
-            this.movie_id_lbl.TabIndex = 1;
-            this.movie_id_lbl.Text = "Movie ID";
+            this.movie_name_lbl_rental.AutoSize = true;
+            this.movie_name_lbl_rental.Location = new System.Drawing.Point(27, 58);
+            this.movie_name_lbl_rental.Name = "movie_name_lbl_rental";
+            this.movie_name_lbl_rental.Size = new System.Drawing.Size(67, 13);
+            this.movie_name_lbl_rental.TabIndex = 1;
+            this.movie_name_lbl_rental.Text = "Movie Name";
             // 
             // rental_title
             // 
@@ -398,7 +395,7 @@
             this.rental_title.BackColor = System.Drawing.Color.MediumPurple;
             this.rental_title.Font = new System.Drawing.Font("Script MT Bold", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rental_title.ForeColor = System.Drawing.Color.Black;
-            this.rental_title.Location = new System.Drawing.Point(96, 11);
+            this.rental_title.Location = new System.Drawing.Point(71, 13);
             this.rental_title.Name = "rental_title";
             this.rental_title.Size = new System.Drawing.Size(177, 33);
             this.rental_title.TabIndex = 0;
@@ -424,7 +421,7 @@
             this.movie_panel.Controls.Add(this.title_lbl);
             this.movie_panel.Controls.Add(this.rating_lbl);
             this.movie_panel.Controls.Add(this.movie_title);
-            this.movie_panel.Location = new System.Drawing.Point(613, 404);
+            this.movie_panel.Location = new System.Drawing.Point(681, 412);
             this.movie_panel.Name = "movie_panel";
             this.movie_panel.Size = new System.Drawing.Size(292, 320);
             this.movie_panel.TabIndex = 3;
@@ -480,30 +477,33 @@
             // 
             // del_movie_btn
             // 
+            this.del_movie_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.del_movie_btn.Location = new System.Drawing.Point(109, 280);
             this.del_movie_btn.Name = "del_movie_btn";
             this.del_movie_btn.Size = new System.Drawing.Size(75, 23);
             this.del_movie_btn.TabIndex = 10;
             this.del_movie_btn.Text = "Delete";
-            this.del_movie_btn.UseVisualStyleBackColor = true;
+            this.del_movie_btn.UseVisualStyleBackColor = false;
             // 
             // update_movie_btn
             // 
+            this.update_movie_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.update_movie_btn.Location = new System.Drawing.Point(202, 280);
             this.update_movie_btn.Name = "update_movie_btn";
             this.update_movie_btn.Size = new System.Drawing.Size(75, 23);
             this.update_movie_btn.TabIndex = 9;
             this.update_movie_btn.Text = "Update";
-            this.update_movie_btn.UseVisualStyleBackColor = true;
+            this.update_movie_btn.UseVisualStyleBackColor = false;
             // 
             // add_movie_btn
             // 
+            this.add_movie_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.add_movie_btn.Location = new System.Drawing.Point(8, 280);
             this.add_movie_btn.Name = "add_movie_btn";
             this.add_movie_btn.Size = new System.Drawing.Size(75, 23);
             this.add_movie_btn.TabIndex = 8;
             this.add_movie_btn.Text = "Add";
-            this.add_movie_btn.UseVisualStyleBackColor = true;
+            this.add_movie_btn.UseVisualStyleBackColor = false;
             // 
             // genre_lbl
             // 
@@ -573,7 +573,7 @@
             this.movie_title.AutoSize = true;
             this.movie_title.BackColor = System.Drawing.Color.MediumPurple;
             this.movie_title.Font = new System.Drawing.Font("Script MT Bold", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movie_title.Location = new System.Drawing.Point(119, 17);
+            this.movie_title.Location = new System.Drawing.Point(70, 15);
             this.movie_title.Name = "movie_title";
             this.movie_title.Size = new System.Drawing.Size(168, 33);
             this.movie_title.TabIndex = 0;
@@ -588,6 +588,20 @@
             this.vedioRental_title_lbl.Size = new System.Drawing.Size(582, 65);
             this.vedioRental_title_lbl.TabIndex = 4;
             this.vedioRental_title_lbl.Text = "Video Rental System";
+            // 
+            // DTP_Date_Rented_Rental
+            // 
+            this.DTP_Date_Rented_Rental.Location = new System.Drawing.Point(165, 147);
+            this.DTP_Date_Rented_Rental.Name = "DTP_Date_Rented_Rental";
+            this.DTP_Date_Rented_Rental.Size = new System.Drawing.Size(200, 20);
+            this.DTP_Date_Rented_Rental.TabIndex = 10;
+            // 
+            // DTP_DateReturned_Rented
+            // 
+            this.DTP_DateReturned_Rented.Location = new System.Drawing.Point(165, 181);
+            this.DTP_DateReturned_Rented.Name = "DTP_DateReturned_Rented";
+            this.DTP_DateReturned_Rented.Size = new System.Drawing.Size(200, 20);
+            this.DTP_DateReturned_Rented.TabIndex = 11;
             // 
             // VedioRental
             // 
@@ -638,17 +652,17 @@
         private System.Windows.Forms.Label First_Name_label;
         private System.Windows.Forms.Label phone_label;
         private System.Windows.Forms.Label address_label;
-        private System.Windows.Forms.Button update_button;
-        private System.Windows.Forms.Button del_button;
-        private System.Windows.Forms.Button add_button;
+        private System.Windows.Forms.Button update_cust_btn;
+        private System.Windows.Forms.Button del_cust_btn;
+        private System.Windows.Forms.Button add_cust_btn;
         private System.Windows.Forms.Panel rental_panel;
         private System.Windows.Forms.Panel movie_panel;
         private System.Windows.Forms.Label rental_title;
         private System.Windows.Forms.Label movie_title;
-        private System.Windows.Forms.Label date_returned_lbl;
-        private System.Windows.Forms.Label date_rented_lbl;
-        private System.Windows.Forms.Label cust_id_lbl;
-        private System.Windows.Forms.Label movie_id_lbl;
+        private System.Windows.Forms.Label date_returned_lbl_rental;
+        private System.Windows.Forms.Label date_rented_lbl_rental;
+        private System.Windows.Forms.Label cust_name_lbl_lbl;
+        private System.Windows.Forms.Label movie_name_lbl_rental;
         private System.Windows.Forms.Label title_lbl;
         private System.Windows.Forms.Label rating_lbl;
         private System.Windows.Forms.Label genre_lbl;
@@ -662,10 +676,8 @@
         private System.Windows.Forms.Button del_movie_btn;
         private System.Windows.Forms.Button update_movie_btn;
         private System.Windows.Forms.Button add_movie_btn;
-        private System.Windows.Forms.TextBox tb_date_returned;
-        private System.Windows.Forms.TextBox tb_date_rented;
-        private System.Windows.Forms.TextBox tb_cust_idfk;
-        private System.Windows.Forms.TextBox tb_movie_idfk;
+        private System.Windows.Forms.TextBox tb_cust_name_rental;
+        private System.Windows.Forms.TextBox tb_movie_name_rental;
         private System.Windows.Forms.TextBox tb_phone;
         private System.Windows.Forms.TextBox tb_address;
         private System.Windows.Forms.TextBox tb_last_name;
@@ -678,6 +690,8 @@
         private System.Windows.Forms.TextBox tb_year;
         private System.Windows.Forms.TextBox tb_rating;
         private System.Windows.Forms.Label vedioRental_title_lbl;
+        private System.Windows.Forms.DateTimePicker DTP_DateReturned_Rented;
+        private System.Windows.Forms.DateTimePicker DTP_Date_Rented_Rental;
     }
 }
 
