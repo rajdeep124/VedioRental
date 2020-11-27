@@ -274,10 +274,10 @@ namespace VedioRental
                 }
             }
         }
-        public DataTable Fillallmovies_Data()
+        public DataTable AllMovies()
         {
             DataTable dt = new DataTable();
-            QueryString = "select * From allMovies";
+            QueryString = "select * From AllMovies";
             using (da = new SqlDataAdapter(QueryString, Obj_Conn))
             {
                 Obj_Conn.Open();

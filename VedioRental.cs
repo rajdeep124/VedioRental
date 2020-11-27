@@ -289,16 +289,7 @@ namespace VedioRental
 
         private void allmovies_btn_Click(object sender, EventArgs e)
         {
-            dgv_rental.DataSource = null;
-            try
-            {
-                dgv_rental.DataSource = Obj_Data.Fillallmovies_Data();
-                dgv_rental.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Rental_Load();
         }
 
         private void rentedOut_btn_Click(object sender, EventArgs e)
