@@ -49,7 +49,9 @@
             this.First_Name_label = new System.Windows.Forms.Label();
             this.customer_title = new System.Windows.Forms.Label();
             this.rental_panel = new System.Windows.Forms.Panel();
+            this.return_btn = new System.Windows.Forms.Button();
             this.DTP_DateReturned_Rented = new System.Windows.Forms.DateTimePicker();
+            this.issue_btn = new System.Windows.Forms.Button();
             this.DTP_Date_Rented_Rental = new System.Windows.Forms.DateTimePicker();
             this.tb_cust_name_rental = new System.Windows.Forms.TextBox();
             this.tb_movie_name_rental = new System.Windows.Forms.TextBox();
@@ -81,10 +83,10 @@
             this.rating_lbl = new System.Windows.Forms.Label();
             this.movie_title = new System.Windows.Forms.Label();
             this.vedioRental_title_lbl = new System.Windows.Forms.Label();
-            this.issue_btn = new System.Windows.Forms.Button();
-            this.return_btn = new System.Windows.Forms.Button();
             this.allmovies_btn = new System.Windows.Forms.Button();
             this.rentedOut_btn = new System.Windows.Forms.Button();
+            this.tb_statcs = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.customer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customer)).BeginInit();
@@ -95,6 +97,8 @@
             this.customer_panel.SuspendLayout();
             this.rental_panel.SuspendLayout();
             this.movie_panel.SuspendLayout();
+            this.tb_statcs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -102,6 +106,7 @@
             this.tabControl1.Controls.Add(this.customer_tab);
             this.tabControl1.Controls.Add(this.movie_tab);
             this.tabControl1.Controls.Add(this.rental_tab);
+            this.tabControl1.Controls.Add(this.tb_statcs);
             this.tabControl1.Location = new System.Drawing.Point(12, 85);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -317,12 +322,32 @@
             this.rental_panel.Size = new System.Drawing.Size(403, 266);
             this.rental_panel.TabIndex = 2;
             // 
+            // return_btn
+            // 
+            this.return_btn.Location = new System.Drawing.Point(284, 107);
+            this.return_btn.Name = "return_btn";
+            this.return_btn.Size = new System.Drawing.Size(116, 23);
+            this.return_btn.TabIndex = 6;
+            this.return_btn.Text = "Movie Return";
+            this.return_btn.UseVisualStyleBackColor = true;
+            this.return_btn.Click += new System.EventHandler(this.return_btn_Click);
+            // 
             // DTP_DateReturned_Rented
             // 
             this.DTP_DateReturned_Rented.Location = new System.Drawing.Point(165, 181);
             this.DTP_DateReturned_Rented.Name = "DTP_DateReturned_Rented";
             this.DTP_DateReturned_Rented.Size = new System.Drawing.Size(200, 20);
             this.DTP_DateReturned_Rented.TabIndex = 11;
+            // 
+            // issue_btn
+            // 
+            this.issue_btn.Location = new System.Drawing.Point(284, 56);
+            this.issue_btn.Name = "issue_btn";
+            this.issue_btn.Size = new System.Drawing.Size(75, 23);
+            this.issue_btn.TabIndex = 5;
+            this.issue_btn.Text = "Issue";
+            this.issue_btn.UseVisualStyleBackColor = true;
+            this.issue_btn.Click += new System.EventHandler(this.issue_btn_Click);
             // 
             // DTP_Date_Rented_Rental
             // 
@@ -614,26 +639,6 @@
             this.vedioRental_title_lbl.TabIndex = 4;
             this.vedioRental_title_lbl.Text = "Video Rental System";
             // 
-            // issue_btn
-            // 
-            this.issue_btn.Location = new System.Drawing.Point(284, 56);
-            this.issue_btn.Name = "issue_btn";
-            this.issue_btn.Size = new System.Drawing.Size(75, 23);
-            this.issue_btn.TabIndex = 5;
-            this.issue_btn.Text = "Issue";
-            this.issue_btn.UseVisualStyleBackColor = true;
-            this.issue_btn.Click += new System.EventHandler(this.issue_btn_Click);
-            // 
-            // return_btn
-            // 
-            this.return_btn.Location = new System.Drawing.Point(284, 107);
-            this.return_btn.Name = "return_btn";
-            this.return_btn.Size = new System.Drawing.Size(116, 23);
-            this.return_btn.TabIndex = 6;
-            this.return_btn.Text = "Movie Return";
-            this.return_btn.UseVisualStyleBackColor = true;
-            this.return_btn.Click += new System.EventHandler(this.return_btn_Click);
-            // 
             // allmovies_btn
             // 
             this.allmovies_btn.Location = new System.Drawing.Point(34, 588);
@@ -653,6 +658,25 @@
             this.rentedOut_btn.Text = "Rented Out";
             this.rentedOut_btn.UseVisualStyleBackColor = true;
             this.rentedOut_btn.Click += new System.EventHandler(this.rentedOut_btn_Click);
+            // 
+            // tb_statcs
+            // 
+            this.tb_statcs.BackColor = System.Drawing.Color.Violet;
+            this.tb_statcs.Controls.Add(this.dataGridView1);
+            this.tb_statcs.Location = new System.Drawing.Point(4, 22);
+            this.tb_statcs.Name = "tb_statcs";
+            this.tb_statcs.Padding = new System.Windows.Forms.Padding(3);
+            this.tb_statcs.Size = new System.Drawing.Size(536, 315);
+            this.tb_statcs.TabIndex = 3;
+            this.tb_statcs.Text = "Statistics";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(524, 303);
+            this.dataGridView1.TabIndex = 0;
             // 
             // VedioRental
             // 
@@ -685,6 +709,8 @@
             this.rental_panel.PerformLayout();
             this.movie_panel.ResumeLayout(false);
             this.movie_panel.PerformLayout();
+            this.tb_statcs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -749,6 +775,8 @@
         private System.Windows.Forms.Button return_btn;
         private System.Windows.Forms.Button allmovies_btn;
         private System.Windows.Forms.Button rentedOut_btn;
+        private System.Windows.Forms.TabPage tb_statcs;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

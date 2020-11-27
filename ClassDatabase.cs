@@ -288,10 +288,10 @@ namespace VedioRental
         }
 
 //code to add the view and to display the data of rented out movies which does not had the return date of the movie
-        public DataTable FillRentedOut_Data()
+        public DataTable RentedOut_Data()
         {
             DataTable dt = new DataTable();
-            QueryString = "select * From FillRentedOut";
+            QueryString = "select * From RentedOut";
             using (da = new SqlDataAdapter(QueryString, Obj_Conn))
             {
                 Obj_Conn.Open();
@@ -333,7 +333,43 @@ namespace VedioRental
                 }
             }
         }
-
+        //code to fill the customer data by using update query
+        public string ReturnMovie(string rating, string title, string year, string Rental_Cost, string copies, string plot, string genre)
+        {
+            try
+            {
+                Cmd.Parameters.Clear();
+                Cmd.Connection = Obj_Conn;
+                QueryString = "update Movies set rating=@rating,title=@title,year=@year,rental_cost=@rental_cost,copies=@copies,plot=@plot,genre=@genre where MovieID=@MovieID";
+                Cmd.Parameters.AddWithValue("@rating", rating);
+                Cmd.Parameters.AddWithValue("@title", title);
+                Cmd.Parameters.AddWithValue("@year", year);
+                Cmd.Parameters.AddWithValue("@Rental_Cost", Rental_Cost);
+                Cmd.Parameters.AddWithValue("@Copies", copies);
+                Cmd.Parameters.AddWithValue("@Plot", plot);
+                Cmd.Parameters.AddWithValue("@Genre", genre);
+                Cmd.Parameters.AddWithValue("@MovieID", MovieID);
+                Cmd.CommandText = QueryString;
+                //connection opened
+                Obj_Conn.Open();
+                // Executed query
+                Cmd.ExecuteNonQuery();
+                return "Movies Details are updated completely";
+            }
+            catch (Exception ex)
+            {
+                // code to show error Message
+                return ex.Message;
+            }
+            finally
+            {
+                // close connection
+                if (Obj_Conn != null)
+                {
+                    Obj_Conn.Close();
+                }
+            }
+        }
 
     }
 }

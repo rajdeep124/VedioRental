@@ -269,7 +269,7 @@ namespace VedioRental
         {
             if (tb_rating.Text != "" && tb_title.Text != "" && tb_year.Text != "" && tb_rental_cost.Text != "" && tb_copies.Text != "" && tb_plot.Text != "" && tb_genre.Text != "")
             {
-                string message = Obj_Data.MovieUpdate(tb_rating.Text, tb_title.Text, tb_year.Text, tb_rental_cost.Text, tb_copies.Text, tb_plot.Text, tb_genre.Text);
+                string message = Obj_Data.ReturnMovie(tb_rating.Text, tb_title.Text, tb_year.Text, tb_rental_cost.Text, tb_copies.Text, tb_plot.Text, tb_genre.Text);
                 MessageBox.Show(message);
                 tb_rating.Text = "";
                 tb_title.Text = "";
@@ -297,7 +297,7 @@ namespace VedioRental
             dgv_rental.DataSource = null;
             try
             {
-                dgv_rental.DataSource = Obj_Data.FillRentedOut_Data();
+                dgv_rental.DataSource = Obj_Data.RentedOut_Data();
                 dgv_rental.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
