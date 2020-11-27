@@ -81,6 +81,10 @@
             this.rating_lbl = new System.Windows.Forms.Label();
             this.movie_title = new System.Windows.Forms.Label();
             this.vedioRental_title_lbl = new System.Windows.Forms.Label();
+            this.issue_btn = new System.Windows.Forms.Button();
+            this.return_btn = new System.Windows.Forms.Button();
+            this.allmovies_btn = new System.Windows.Forms.Button();
+            this.rentedOut_btn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.customer_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customer)).BeginInit();
@@ -160,9 +164,9 @@
             // dgv_rental
             // 
             this.dgv_rental.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_rental.Location = new System.Drawing.Point(18, 19);
+            this.dgv_rental.Location = new System.Drawing.Point(6, 6);
             this.dgv_rental.Name = "dgv_rental";
-            this.dgv_rental.Size = new System.Drawing.Size(511, 285);
+            this.dgv_rental.Size = new System.Drawing.Size(523, 303);
             this.dgv_rental.TabIndex = 0;
             // 
             // customer_panel
@@ -294,7 +298,9 @@
             // 
             // rental_panel
             // 
+            this.rental_panel.Controls.Add(this.return_btn);
             this.rental_panel.Controls.Add(this.DTP_DateReturned_Rented);
+            this.rental_panel.Controls.Add(this.issue_btn);
             this.rental_panel.Controls.Add(this.DTP_Date_Rented_Rental);
             this.rental_panel.Controls.Add(this.tb_cust_name_rental);
             this.rental_panel.Controls.Add(this.tb_movie_name_rental);
@@ -306,9 +312,9 @@
             this.rental_panel.Controls.Add(this.cust_name_lbl_lbl);
             this.rental_panel.Controls.Add(this.movie_name_lbl_rental);
             this.rental_panel.Controls.Add(this.rental_title);
-            this.rental_panel.Location = new System.Drawing.Point(285, 432);
+            this.rental_panel.Location = new System.Drawing.Point(272, 432);
             this.rental_panel.Name = "rental_panel";
-            this.rental_panel.Size = new System.Drawing.Size(380, 266);
+            this.rental_panel.Size = new System.Drawing.Size(403, 266);
             this.rental_panel.TabIndex = 2;
             // 
             // DTP_DateReturned_Rented
@@ -411,7 +417,7 @@
             this.rental_title.BackColor = System.Drawing.Color.MediumPurple;
             this.rental_title.Font = new System.Drawing.Font("Script MT Bold", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rental_title.ForeColor = System.Drawing.Color.Black;
-            this.rental_title.Location = new System.Drawing.Point(71, 13);
+            this.rental_title.Location = new System.Drawing.Point(118, 8);
             this.rental_title.Name = "rental_title";
             this.rental_title.Size = new System.Drawing.Size(177, 33);
             this.rental_title.TabIndex = 0;
@@ -608,6 +614,46 @@
             this.vedioRental_title_lbl.TabIndex = 4;
             this.vedioRental_title_lbl.Text = "Video Rental System";
             // 
+            // issue_btn
+            // 
+            this.issue_btn.Location = new System.Drawing.Point(284, 56);
+            this.issue_btn.Name = "issue_btn";
+            this.issue_btn.Size = new System.Drawing.Size(75, 23);
+            this.issue_btn.TabIndex = 5;
+            this.issue_btn.Text = "Issue";
+            this.issue_btn.UseVisualStyleBackColor = true;
+            this.issue_btn.Click += new System.EventHandler(this.issue_btn_Click);
+            // 
+            // return_btn
+            // 
+            this.return_btn.Location = new System.Drawing.Point(284, 107);
+            this.return_btn.Name = "return_btn";
+            this.return_btn.Size = new System.Drawing.Size(116, 23);
+            this.return_btn.TabIndex = 6;
+            this.return_btn.Text = "Movie Return";
+            this.return_btn.UseVisualStyleBackColor = true;
+            this.return_btn.Click += new System.EventHandler(this.return_btn_Click);
+            // 
+            // allmovies_btn
+            // 
+            this.allmovies_btn.Location = new System.Drawing.Point(34, 588);
+            this.allmovies_btn.Name = "allmovies_btn";
+            this.allmovies_btn.Size = new System.Drawing.Size(75, 23);
+            this.allmovies_btn.TabIndex = 6;
+            this.allmovies_btn.Text = "All Movies";
+            this.allmovies_btn.UseVisualStyleBackColor = true;
+            this.allmovies_btn.Click += new System.EventHandler(this.allmovies_btn_Click);
+            // 
+            // rentedOut_btn
+            // 
+            this.rentedOut_btn.Location = new System.Drawing.Point(34, 658);
+            this.rentedOut_btn.Name = "rentedOut_btn";
+            this.rentedOut_btn.Size = new System.Drawing.Size(75, 23);
+            this.rentedOut_btn.TabIndex = 7;
+            this.rentedOut_btn.Text = "Rented Out";
+            this.rentedOut_btn.UseVisualStyleBackColor = true;
+            this.rentedOut_btn.Click += new System.EventHandler(this.rentedOut_btn_Click);
+            // 
             // VedioRental
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,6 +662,8 @@
             this.BackgroundImage = global::VedioRental.Properties.Resources.gamewal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1008, 736);
+            this.Controls.Add(this.rentedOut_btn);
+            this.Controls.Add(this.allmovies_btn);
             this.Controls.Add(this.vedioRental_title_lbl);
             this.Controls.Add(this.movie_panel);
             this.Controls.Add(this.rental_panel);
@@ -697,6 +745,10 @@
         private System.Windows.Forms.Label vedioRental_title_lbl;
         private System.Windows.Forms.DateTimePicker DTP_DateReturned_Rented;
         private System.Windows.Forms.DateTimePicker DTP_Date_Rented_Rental;
+        private System.Windows.Forms.Button issue_btn;
+        private System.Windows.Forms.Button return_btn;
+        private System.Windows.Forms.Button allmovies_btn;
+        private System.Windows.Forms.Button rentedOut_btn;
     }
 }
 
