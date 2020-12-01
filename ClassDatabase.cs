@@ -18,7 +18,7 @@ namespace VedioRental
         string QueryString;
 
         //code of customerid to declare variable as integer
-        public int CustomerID, MovieID;
+        public int CustomerID, MovieID, RentalMovieID;
 
         //code to connect the SQL Server Database with the Visual studio
         public ClassDatabase()
@@ -308,7 +308,7 @@ namespace VedioRental
             {
                 Cmd.Parameters.Clear();
                 Cmd.Connection = Obj_Conn;
-                QueryString = "Insert into RentedMovies(MovieIDFK,CustIDFK,DateRented,DateReturned) values(@MovieID,@CustID,@Issue_date,NULL)";
+                QueryString = "Insert into RentedMovies(MovieIDFK,CustIDFK,DateRented,DateReturned) values(@MovieID,@CustID,@Issue_date,Null)";
                 Cmd.Parameters.AddWithValue("@CustID", CustomerID);
                 Cmd.Parameters.AddWithValue("@MovieID",MovieID);
                 Cmd.Parameters.AddWithValue("@Issue_date", Issue_date);
@@ -334,27 +334,23 @@ namespace VedioRental
             }
         }
         //code to fill the customer data by using update query
-        public string ReturnMovie(string rating, string title, string year, string Rental_Cost, string copies, string plot, string genre)
+        public string ReturnMovie(DateTime Return_Date)
         {
             try
             {
                 Cmd.Parameters.Clear();
                 Cmd.Connection = Obj_Conn;
-                QueryString = "update Movies set rating=@rating,title=@title,year=@year,rental_cost=@rental_cost,copies=@copies,plot=@plot,genre=@genre where MovieID=@MovieID";
-                Cmd.Parameters.AddWithValue("@rating", rating);
-                Cmd.Parameters.AddWithValue("@title", title);
-                Cmd.Parameters.AddWithValue("@year", year);
-                Cmd.Parameters.AddWithValue("@Rental_Cost", Rental_Cost);
-                Cmd.Parameters.AddWithValue("@Copies", copies);
-                Cmd.Parameters.AddWithValue("@Plot", plot);
-                Cmd.Parameters.AddWithValue("@Genre", genre);
+                QueryString = "Update into ReturnedMovie(MovieIDFK,CustIDFK,DateRented,DateReturn) values(@MovieID,@CustID,@Return_Date,Null)";
+                Cmd.Parameters.AddWithValue("@CustID", CustomerID);
                 Cmd.Parameters.AddWithValue("@MovieID", MovieID);
+                Cmd.Parameters.AddWithValue("@Return_date", Return_Date);
+              
                 Cmd.CommandText = QueryString;
                 //connection opened
                 Obj_Conn.Open();
                 // Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movies Details are updated completely";
+                return "Movies is Returned to customer";
             }
             catch (Exception ex)
             {

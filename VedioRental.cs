@@ -267,9 +267,9 @@ namespace VedioRental
 
         private void return_btn_Click(object sender, EventArgs e)
         {
-            if (tb_rating.Text != "" && tb_title.Text != "" && tb_year.Text != "" && tb_rental_cost.Text != "" && tb_copies.Text != "" && tb_plot.Text != "" && tb_genre.Text != "")
+            if (tb_movie_name_rental.Text != "" && tb_cust_name_rental.Text != "")
             {
-                string message = Obj_Data.ReturnMovie(tb_rating.Text, tb_title.Text, tb_year.Text, tb_rental_cost.Text, tb_copies.Text, tb_plot.Text, tb_genre.Text);
+                string message = Obj_Data.ReturnMovie(Convert.ToDateTime(DTP_DateReturned_Rented.Text));
                 MessageBox.Show(message);
                 tb_rating.Text = "";
                 tb_title.Text = "";
@@ -278,7 +278,13 @@ namespace VedioRental
                 tb_copies.Text = "";
                 tb_plot.Text = "";
                 tb_genre.Text = "";
-                Movies_Load();
+                tb_movie_name_rental.Text = "";
+                tb_first_name.Text = "";
+                tb_last_name.Text = "";
+                tb_phone.Text = "";
+                tb_address.Text = "";
+                tb_cust_name_rental.Text = "";
+                Rental_Load();
             }
             else
             {
@@ -304,6 +310,29 @@ namespace VedioRental
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void dgv_rental_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string newvalue = dgv_rental.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                this.Text = "Row : " + e.RowIndex.ToString() + " Col : " + e.ColumnIndex.ToString() + " Value = " + newvalue;
+                Obj_Data.RentalMovieID= Convert.ToInt32(dgv_rental.Rows[e.RowIndex].Cells[0].Value);
+                tb_movie_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_cust_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[2].Value.ToString();
+                DTP_Date_Rented_Rental.Text = dgv_rental.Rows[e.RowIndex].Cells[3].Value.ToString();
+                DTP_DateReturned_Rented.Text = dgv_rental.Rows[e.RowIndex].Cells[4].Value.ToString();
+               
+                tb_movie_name_rental.Text = dgv_movie.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                // code to show the message if user did not fill all the details
+                MessageBox.Show("Something is wrong", ex.Message);
+            }
+
         }
     }
 }
