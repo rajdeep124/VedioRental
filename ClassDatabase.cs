@@ -69,7 +69,33 @@ namespace VedioRental
             return dt;
         }
 
-//code to fill the customer data by using insert query
+        public DataTable FillPopular_Customer()
+        {
+            DataTable dt = new DataTable();
+            QueryString = "select * From Popular_Customer";
+            using (da = new SqlDataAdapter(QueryString, Obj_Conn))
+            {
+                Obj_Conn.Open();
+                da.Fill(dt);
+                Obj_Conn.Close();
+            }
+            return dt;
+        }
+
+
+        public DataTable FillPopular_Movie()
+        {
+            DataTable dt = new DataTable();
+            QueryString = "select * From Popular_Movie";
+            using (da = new SqlDataAdapter(QueryString, Obj_Conn))
+            {
+                Obj_Conn.Open();
+                da.Fill(dt);
+                Obj_Conn.Close();
+            }
+            return dt;
+        }
+        //code to fill the customer data by using insert query
         public string CustomerInsert(string FName, string LName, string Phone, string Address)
         {
             try
@@ -340,7 +366,7 @@ namespace VedioRental
             {
                 Cmd.Parameters.Clear();
                 Cmd.Connection = Obj_Conn;
-                QueryString = "Update into ReturnedMovie(MovieIDFK,CustIDFK,DateRented,DateReturn) values(@MovieID,@CustID,@Return_Date,Null)";
+                QueryString = "Update into Update_Return(MovieIDFK,CustIDFK,DateRented,DateReturn) values(@MovieID,@CustID,@Return_Date,Null)";
                 Cmd.Parameters.AddWithValue("@CustID", CustomerID);
                 Cmd.Parameters.AddWithValue("@MovieID", MovieID);
                 Cmd.Parameters.AddWithValue("@Return_date", Return_Date);

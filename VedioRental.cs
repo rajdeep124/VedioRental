@@ -23,6 +23,8 @@ namespace VedioRental
             Customer_Load();
             Movies_Load();
             Rental_Load();
+            Popular_Customer_Load();
+            Popular_Movie_Load();
         }
 
 //code to display the database of customer table while load or start the progamme or vedioRental form
@@ -63,6 +65,36 @@ namespace VedioRental
             {
                 dgv_rental.DataSource = Obj_Data.FillRent_Data();
                 dgv_rental.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+//code of POPULAR CUSTOMER
+        public void Popular_Customer_Load()
+        {
+            dgv_popularCustomer.DataSource = null;
+            try
+            {
+                dgv_popularCustomer.DataSource = Obj_Data.FillPopular_Customer();
+                dgv_popularCustomer.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+ //code of POPULAR MOVIE
+        public void Popular_Movie_Load()
+        {
+            dgv_popularMovie.DataSource = null;
+            try
+            {
+                dgv_popularMovie.DataSource = Obj_Data.FillPopular_Movie();
+                dgv_popularMovie.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
             {
@@ -318,12 +350,14 @@ namespace VedioRental
             {
                 string newvalue = dgv_rental.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 this.Text = "Row : " + e.RowIndex.ToString() + " Col : " + e.ColumnIndex.ToString() + " Value = " + newvalue;
-                Obj_Data.RentalMovieID= Convert.ToInt32(dgv_rental.Rows[e.RowIndex].Cells[0].Value);
+                Obj_Data.MovieID = Convert.ToInt32(dgv_rental.Rows[e.RowIndex].Cells[0].Value);
                 tb_movie_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[1].Value.ToString();
                 tb_cust_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[2].Value.ToString();
                 DTP_Date_Rented_Rental.Text = dgv_rental.Rows[e.RowIndex].Cells[3].Value.ToString();
                 DTP_DateReturned_Rented.Text = dgv_rental.Rows[e.RowIndex].Cells[4].Value.ToString();
-               
+                tb_copies.Text = dgv_movie.Rows[e.RowIndex].Cells[5].Value.ToString();
+                tb_plot.Text = dgv_movie.Rows[e.RowIndex].Cells[6].Value.ToString();
+                tb_genre.Text = dgv_movie.Rows[e.RowIndex].Cells[7].Value.ToString();
                 tb_movie_name_rental.Text = dgv_movie.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
             catch (Exception ex)
@@ -334,6 +368,8 @@ namespace VedioRental
             }
 
         }
+
+     
     }
 }
     
