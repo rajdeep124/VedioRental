@@ -367,16 +367,15 @@ namespace VedioRental
             {
                 Cmd.Parameters.Clear();
                 Cmd.Connection = Obj_Conn;
-                QueryString = "updat RentedMovies set DateReturned=@Return_date whereRMID=@RMID";
+                QueryString = "update RentedMovies set DateReturned=@DateReturned where RMID=@RMID";
                 Cmd.Parameters.AddWithValue("@DateReturned",Return_date);
                 Cmd.Parameters.AddWithValue("@RMID", RentalMovieID);
-               
                 Cmd.CommandText = QueryString;
                 //connection opened
                 Obj_Conn.Open();
                 // Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movies is returned to customer";
+                return "Movies is returned from customer";
             }
             catch (Exception ex)
             {

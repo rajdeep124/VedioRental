@@ -299,9 +299,9 @@ namespace VedioRental
 
         private void return_btn_Click(object sender, EventArgs e)
         {
-            if (tb_title.Text != "" &&tb_cust_name_rental.Text!="")
+            if (tb_movie_name_rental.Text != "" && tb_cust_name_rental.Text!="")
             {
-                string message = Obj_Data.MovieReturn(Convert.ToDateTime(DTP_DateReturned_Rented));
+                string message = Obj_Data.MovieReturn(Convert.ToDateTime(DTP_DateReturned_Rented.Text));
                 MessageBox.Show(message);
                 tb_rating.Text = "";
                 tb_title.Text = "";
