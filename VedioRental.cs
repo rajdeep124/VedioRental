@@ -265,7 +265,7 @@ namespace VedioRental
             tb_plot.Text = "";
             tb_genre.Text = "";
             tb_movie_name_rental.Text = "";
-            Customer_Load();
+            Movies_Load();
         }
 
         private void issue_btn_Click(object sender, EventArgs e)
@@ -299,9 +299,9 @@ namespace VedioRental
 
         private void return_btn_Click(object sender, EventArgs e)
         {
-            if (tb_movie_name_rental.Text != "" && tb_cust_name_rental.Text != "")
+            if (tb_title.Text != "" &&tb_cust_name_rental.Text!="")
             {
-                string message = Obj_Data.ReturnMovie(Convert.ToDateTime(DTP_DateReturned_Rented.Text));
+                string message = Obj_Data.MovieReturn(Convert.ToDateTime(DTP_DateReturned_Rented));
                 MessageBox.Show(message);
                 tb_rating.Text = "";
                 tb_title.Text = "";
@@ -323,6 +323,7 @@ namespace VedioRental
                 // code to show the message if user did not fill all the details
                 MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
             }
+
         }
 
         private void allmovies_btn_Click(object sender, EventArgs e)
@@ -350,15 +351,12 @@ namespace VedioRental
             {
                 string newvalue = dgv_rental.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 this.Text = "Row : " + e.RowIndex.ToString() + " Col : " + e.ColumnIndex.ToString() + " Value = " + newvalue;
-                Obj_Data.MovieID = Convert.ToInt32(dgv_rental.Rows[e.RowIndex].Cells[0].Value);
-                tb_movie_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[1].Value.ToString();
-                tb_cust_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[2].Value.ToString();
-                DTP_Date_Rented_Rental.Text = dgv_rental.Rows[e.RowIndex].Cells[3].Value.ToString();
-                DTP_DateReturned_Rented.Text = dgv_rental.Rows[e.RowIndex].Cells[4].Value.ToString();
-                tb_copies.Text = dgv_movie.Rows[e.RowIndex].Cells[5].Value.ToString();
-                tb_plot.Text = dgv_movie.Rows[e.RowIndex].Cells[6].Value.ToString();
-                tb_genre.Text = dgv_movie.Rows[e.RowIndex].Cells[7].Value.ToString();
-                tb_movie_name_rental.Text = dgv_movie.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Obj_Data.RentalMovieID = Convert.ToInt32(dgv_rental.Rows[e.RowIndex].Cells[9].Value);
+                tb_movie_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[6].Value.ToString();
+                tb_cust_name_rental.Text = dgv_rental.Rows[e.RowIndex].Cells[0].Value.ToString()+""+dgv_rental.Rows[e.RowIndex].Cells[1].Value.ToString();
+                DTP_Date_Rented_Rental.Text = dgv_rental.Rows[e.RowIndex].Cells[4].Value.ToString();
+              
+             
             }
             catch (Exception ex)
             {
