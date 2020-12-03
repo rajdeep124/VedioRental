@@ -16,6 +16,8 @@ namespace VedioRental
         private SqlDataReader Data_Reader;
         private SqlDataAdapter da = new SqlDataAdapter();
         string QueryString;
+        public string ConnString = @"Data Source=LAPTOP-II78TMAS\SQLEXPRESS;Initial Catalog=VideoRental;Integrated Security=True";
+
 
         //code of customerid to declare variable as integer
         public int CustomerID, MovieID, RentalMovieID;
@@ -374,7 +376,7 @@ namespace VedioRental
                 Obj_Conn.Open();
                 // Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movies issued to customer";
+                return "Movies is returned to customer";
             }
             catch (Exception ex)
             {
