@@ -42,7 +42,7 @@ namespace VedioRental
             }
         }
 
-//code to display the database of movies table while load or start the progamme or vedioRental form
+//code to display the database of movies table while load and start the progamme or vedioRental form
         public void Movies_Load()
         {
             dgv_movie.DataSource = null;
