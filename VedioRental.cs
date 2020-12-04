@@ -12,7 +12,7 @@ namespace VedioRental
 {
     public partial class VedioRental : Form
     {
-//code link the ClassDatabase with the VedioRental form
+//code to link the ClassDatabase with the VedioRental form
         ClassDatabase Obj_Data = new ClassDatabase();
 
         public VedioRental()
@@ -27,7 +27,7 @@ namespace VedioRental
             Popular_Movie_Load();
         }
 
-//code to display the database of customer table while load or start the progamme or vedioRental form
+//code to display the database of the customer table while load or start the progamme or vedioRental form
         public void Customer_Load()
         {
             dgv_customer.DataSource = null;
@@ -106,25 +106,7 @@ namespace VedioRental
 
         }
 
- //code of ADD BUTTON from the customer panel to add the data after clicking on ADD BUTTON
-        private void add_cust_btn_Click(object sender, EventArgs e)
-        {
-            if (tb_first_name.Text != "" && tb_last_name.Text != "" && tb_address.Text != "" && tb_phone.Text != "")
-            {
-                string message = Obj_Data.CustomerInsert(tb_first_name.Text, tb_last_name.Text, tb_phone.Text, tb_address.Text);
-                MessageBox.Show(message);
-                tb_first_name.Text = "";
-                tb_last_name.Text = "";
-                tb_phone.Text = "";
-                tb_address.Text = "";
-                Customer_Load();
-            }
-            else
-            {
-// code to show the message if user did not fill all the details
-                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
-            }
-        }
+
 //code of DATA GRID VIEW from the customer panel to Show the data after clicking on ADD,DELETE,UPDATE BUTTON and also show the database after starting the programme
         private void dgv_customer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -142,10 +124,31 @@ namespace VedioRental
             catch (Exception ex)
             {
 
-// code to show the message if user did not fill all the details
+                // code to show the message if user did not fill all the details
                 MessageBox.Show("Something is wrong", ex.Message);
             }
         }
+
+        //code of ADD BUTTON from the customer panel to add the data after clicking on ADD BUTTON
+        private void add_cust_btn_Click(object sender, EventArgs e)
+        {
+            if (tb_first_name.Text != "" && tb_last_name.Text != "" && tb_address.Text != "" && tb_phone.Text != "")
+            {
+                string message = Obj_Data.CustomerInsert(tb_first_name.Text, tb_last_name.Text, tb_phone.Text, tb_address.Text);
+                MessageBox.Show(message);
+                tb_first_name.Text = "";
+                tb_last_name.Text = "";
+                tb_phone.Text = "";
+                tb_address.Text = "";
+                Customer_Load();
+            }
+            else
+            {
+// code to show the message if user did not fill all the details
+                MessageBox.Show("All the required details are need to be filled");
+            }
+        }
+
 
 //code of UPDATE BUTTON from the customer panel to update the data after clicking on UPDATE BUTTON
         private void update_cust_btn_Click(object sender, EventArgs e)
@@ -164,7 +167,7 @@ namespace VedioRental
             else
             {
 // code to show the message if user did not fill all the details
-                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
+                MessageBox.Show("All the required details are need to be filled, after that click the Update button");
             }
 
 
@@ -183,6 +186,7 @@ namespace VedioRental
             Customer_Load();
         }
 
+//code of DATA GRID VIEW of the Movie  panel to Show the data after clicking on ADD,DELETE,UPDATE BUTTON and also show the database after starting the programme
         private void dgv_movie_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -202,12 +206,14 @@ namespace VedioRental
             catch (Exception ex)
             {
 
-                // code to show the message if user did not fill all the details
+// code to show the message if user did not fill all the details or select something wrong while using the movie panel's button
                 MessageBox.Show("Something is wrong", ex.Message);
             }
 
         }
 
+
+//code of ADD BUTTON from the Movie panel to add the data after clicking on ADD BUTTON
         private void add_movie_btn_Click(object sender, EventArgs e)
         {
             if (tb_rating.Text != "" && tb_title.Text != "" && tb_year.Text != "" && tb_rental_cost.Text != "" && tb_copies.Text != "" && tb_plot.Text != "" && tb_genre.Text != "")
@@ -226,10 +232,12 @@ namespace VedioRental
             else
             {
                 // code to show the message if user did not fill all the details
-                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
+                MessageBox.Show("All the required details are need to be filled");
             }
         }
 
+
+//code of UPDATE BUTTON from the movie panel to update the data after clicking on UPDATE BUTTON
         private void update_movie_btn_Click(object sender, EventArgs e)
         {
             if (tb_rating.Text != "" && tb_title.Text != "" && tb_year.Text != "" && tb_rental_cost.Text != "" && tb_copies.Text != "" && tb_plot.Text != "" && tb_genre.Text != "")
@@ -247,12 +255,13 @@ namespace VedioRental
             }
             else
             {
-                // code to show the message if user did not fill all the details
-                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
+// code to show the message if user did not fill all the details
+                MessageBox.Show("All the required details are need to be filled");
             }
 
         }
 
+//code of DELETE BUTTON from the Movie panel to delete the data after clicking on Delete BUTTON
         private void del_movie_btn_Click(object sender, EventArgs e)
         {
             string message = Obj_Data.MovieDelete();
@@ -268,6 +277,7 @@ namespace VedioRental
             Movies_Load();
         }
 
+  //code of ISSUE BUTTON from the rental panel to issue the movie to the customer after clicking on ISSUE BUTTON
         private void issue_btn_Click(object sender, EventArgs e)
         {
             if (tb_movie_name_rental.Text != "" && tb_cust_name_rental.Text != "")
@@ -292,11 +302,14 @@ namespace VedioRental
             }
             else
             {
-                // code to show the message if user did not fill all the details
-                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
+
+// code to show the message if user did not fill all the details
+                MessageBox.Show("All the Required details are need to be filled and click the ISSUE button");
             }
         }
 
+
+//code of RETURN BUTTON from the rental panel to show the data after clicking on RETURN BUTTON
         private void return_btn_Click(object sender, EventArgs e)
         {
             if (tb_movie_name_rental.Text != "" && tb_cust_name_rental.Text!="")
@@ -320,17 +333,21 @@ namespace VedioRental
             }
             else
             {
-                // code to show the message if user did not fill all the details
-                MessageBox.Show("Please fill all the required details and add the new details by clicking Add button");
+// code to show the message if user did not fill all the details
+                MessageBox.Show("All the required details are need to be filled");
             }
 
         }
 
+
+//code of allmovies button
         private void allmovies_btn_Click(object sender, EventArgs e)
         {
             Rental_Load();
         }
 
+
+//code of rented out button
         private void rentedOut_btn_Click(object sender, EventArgs e)
         {
             dgv_rental.DataSource = null;
@@ -345,6 +362,7 @@ namespace VedioRental
             }
         }
 
+//code of DATA GRID VIEW of the Rental  panel to Show the data after clicking 
         private void dgv_rental_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -361,7 +379,7 @@ namespace VedioRental
             catch (Exception ex)
             {
 
-                // code to show the message if user did not fill all the details
+// code to show the message if user did not fill all the details
                 MessageBox.Show("Something is wrong", ex.Message);
             }
 

@@ -10,7 +10,7 @@ namespace VedioRental
 {
     public class ClassDatabase
     {
-        //code to connect the SQL Server Database with the Visual studio
+//code to connect the SQL Server Database with the Visual studio
         private SqlConnection Obj_Conn = new SqlConnection();
         private SqlCommand Cmd = new SqlCommand();
         private SqlDataReader Data_Reader;
@@ -19,17 +19,17 @@ namespace VedioRental
         public string ConnString = @"Data Source=LAPTOP-II78TMAS\SQLEXPRESS;Initial Catalog=VideoRental;Integrated Security=True";
 
 
-        //code of customerid to declare variable as integer
+//code of customerid to declare variable as integer
         public int CustomerID, MovieID, RentalMovieID;
 
-        //code to connect the SQL Server Database with the Visual studio
+//code to connect the SQL Server Database with the Visual studio
         public ClassDatabase()
         {
             string ConnString = @"Data Source=LAPTOP-II78TMAS\SQLEXPRESS;Initial Catalog=VideoRental;Integrated Security=True";
             Obj_Conn.ConnectionString = ConnString;
         }
 
-        //code to fill the customer data by using select query
+//code to fill the customer data by using select query
         public DataTable FillCustomer_Data()
         {
             DataTable dt = new DataTable();
@@ -43,7 +43,7 @@ namespace VedioRental
             return dt;
         }
 
-        //code to fill the movies data by using select query
+//code to fill the movies data by using select query
         public DataTable FillMovies_Data()
         {
             DataTable dt = new DataTable();
@@ -57,7 +57,7 @@ namespace VedioRental
             return dt;
         }
 
-        //code to fill the rental data by using select query
+//code to fill the rental data by using select query
         public DataTable FillRent_Data()
         {
             DataTable dt = new DataTable();
@@ -71,6 +71,7 @@ namespace VedioRental
             return dt;
         }
 
+//code to fill the Popular Customer by using select query
         public DataTable FillPopular_Customer()
         {
             DataTable dt = new DataTable();
@@ -84,7 +85,7 @@ namespace VedioRental
             return dt;
         }
 
-
+//code to fill the Popular Movie by using select query
         public DataTable FillPopular_Movie()
         {
             DataTable dt = new DataTable();
@@ -97,7 +98,9 @@ namespace VedioRental
             }
             return dt;
         }
-        //code to fill the customer data by using insert query
+
+
+ //code to fill the customer data by using insert query
         public string CustomerInsert(string FName, string LName, string Phone, string Address)
         {
             try
@@ -110,20 +113,20 @@ namespace VedioRental
                 Cmd.Parameters.AddWithValue("@Address", Address);
                 Cmd.Parameters.AddWithValue("@Phone", Phone);
                 Cmd.CommandText = QueryString;
-                //connection opened
+ //connection opened
                 Obj_Conn.Open();
-                // Executed query
+// Executed query
                 Cmd.ExecuteNonQuery();
-                return "Customer Details are filled completely";
+                return "Customer Details are inserted properly";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // close connection
+// close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();
@@ -131,7 +134,7 @@ namespace VedioRental
             }
         }
 
-        //code to update the customer data by using insert query
+//code to update the customer data by using insert query
         public string CustomerUpdate(string FName, string LName, string Phone, string Address)
         {
             try
@@ -145,20 +148,21 @@ namespace VedioRental
                 Cmd.Parameters.AddWithValue("@Phone", Phone);
                 Cmd.Parameters.AddWithValue("@CustID", CustomerID);
                 Cmd.CommandText = QueryString;
-                //connection opened
+//connection opened
                 Obj_Conn.Open();
-                // Executed query
+                
+// Executed query
                 Cmd.ExecuteNonQuery();
-                return "Customer Details Updated Completly";
+                return "Customer Data is Updated now";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // close connection
+// close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();
@@ -166,7 +170,8 @@ namespace VedioRental
             }
         }
 
-        //code to delete the customer data by using insert query
+
+//code to delete the customer data by using insert query
         public string CustomerDelete()
         {
             try
@@ -176,27 +181,28 @@ namespace VedioRental
                 QueryString = "Delete from Customer where CustID =@CustID";
                 Cmd.Parameters.AddWithValue("@CustID", CustomerID);
                 Cmd.CommandText = QueryString;
-                //connection opened
+//connection opened
                 Obj_Conn.Open();
-                // Executed query
+// Executed query
                 Cmd.ExecuteNonQuery();
-                return "Customer Details Deleted Completely";
+                return "Customer Data is Deleted now";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // code to close connection
+// code to close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();
                 }
             }
         }
-        //code to fill the movie data by using insert query
+
+//code to fill the movie data by using insert query
         public string MovieInsert(string rating, string title, string year, string Rental_Cost, string copies, string plot, string genre)
         {
             try
@@ -212,20 +218,20 @@ namespace VedioRental
                 Cmd.Parameters.AddWithValue("@Plot", plot);
                 Cmd.Parameters.AddWithValue("@Genre", genre);
                 Cmd.CommandText = QueryString;
-                //connection opened
+ //connection opened
                 Obj_Conn.Open();
-                // Executed query
+ // Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movies Details are filled completely";
+                return "Movies Data is inserted properly";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // close connection
+ // close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();
@@ -234,7 +240,7 @@ namespace VedioRental
         }
 
 
-        //code to fill the customer data by using update query
+//code to fill the customer data by using update query
         public string MovieUpdate(string rating, string title, string year, string Rental_Cost, string copies, string plot, string genre)
         {
             try
@@ -251,20 +257,20 @@ namespace VedioRental
                 Cmd.Parameters.AddWithValue("@Genre", genre);
                 Cmd.Parameters.AddWithValue("@MovieID", MovieID);
                 Cmd.CommandText = QueryString;
-                //connection opened
+//connection opened
                 Obj_Conn.Open();
-                // Executed query
+// Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movies Details are updated completely";
+                return "Movies Data is Updated Now";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // close connection
+// close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();
@@ -272,7 +278,7 @@ namespace VedioRental
             }
         }
 
-        //code to fill the customer data by using delete query
+//code to fill the customer data by using delete query
         public string MovieDelete()
         {
             try
@@ -282,26 +288,28 @@ namespace VedioRental
                 QueryString = "Delete from Movies where MovieID =@MovieID";
                 Cmd.Parameters.AddWithValue("@MovieID", MovieID);
                 Cmd.CommandText = QueryString;
-                //connection opened
+//connection opened
                 Obj_Conn.Open();
-                // Executed query
+// Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movie Details Deleted Completely";
+                return "Movie Data is Deleted Now";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // code to close connection
+// code to close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();
                 }
             }
         }
+
+//code to fill the data of All Movies button by using select query
         public DataTable AllMovies()
         {
             DataTable dt = new DataTable();
@@ -315,7 +323,8 @@ namespace VedioRental
             return dt;
         }
 
-        //code to add the view and to display the data of rented out movies which does not had the return date of the movie
+
+//code to add the view and to display the data of rented out movies which does not had the return date of the movie
         public DataTable RentedOut_Data()
         {
             DataTable dt = new DataTable();
@@ -329,7 +338,8 @@ namespace VedioRental
             return dt;
         }
 
-        //code to fill the movie data by using insert query
+
+//code to fill the movie data by using insert query
         public string IssueMovie(DateTime Issue_date)
         {
             try
@@ -341,26 +351,28 @@ namespace VedioRental
                 Cmd.Parameters.AddWithValue("@MovieID", MovieID);
                 Cmd.Parameters.AddWithValue("@Issue_date", Issue_date);
                 Cmd.CommandText = QueryString;
-                //connection opened
+ //connection opened
                 Obj_Conn.Open();
-                // Executed query
+// Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movies issued to customer";
+                return "Movies are Issued to Customer";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // close connection
+// close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();
                 }
             }
         }
+
+//santize code of Movie Return
         public string MovieReturn(DateTime Return_date)
         {
             try
@@ -371,20 +383,20 @@ namespace VedioRental
                 Cmd.Parameters.AddWithValue("@DateReturned",Return_date);
                 Cmd.Parameters.AddWithValue("@RMID", RentalMovieID);
                 Cmd.CommandText = QueryString;
-                //connection opened
+//connection opened
                 Obj_Conn.Open();
-                // Executed query
+// Executed query
                 Cmd.ExecuteNonQuery();
-                return "Movies is returned from customer";
+                return "Movies Are Returned From The Customer";
             }
             catch (Exception ex)
             {
-                // code to show error Message
+// code to show error Message
                 return ex.Message;
             }
             finally
             {
-                // close connection
+// close connection
                 if (Obj_Conn != null)
                 {
                     Obj_Conn.Close();

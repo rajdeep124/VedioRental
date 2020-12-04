@@ -7,6 +7,7 @@ namespace UnitTesting_vedioRental
     [TestClass]
     public class vedioRental_UnitTest
     {
+//code is to link the class with unit testing
         ClassDatabase Obj_Data = new ClassDatabase();
 
 //code is to check valid Test Case of connection String
